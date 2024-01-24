@@ -1,7 +1,7 @@
 /*
 SQL Nivel Inicial | NivelUp Chile
 Módulo 3
-Nombre:
+Nombre: Javiera Zavala
 */
 
 -- Ejemplos
