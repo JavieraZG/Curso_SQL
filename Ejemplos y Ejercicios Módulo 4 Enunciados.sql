@@ -233,16 +233,16 @@ FROM
 WHERE
 	title ILIKE '%Truman%';
 
-	
+/*	
 -- Ejemplos
 -- CASE general (permite crear nuevas columnas)
 -- Sintaxis:
-CASE
+ CASE
 	WHEN condición_1 THEN resultado_1
 	WHEN condición_2 THEN resultado_2
 	ELSE otro_resultado
 END *AS nombre_columna*
-
+*/
 
 /*
 CASE general - una condición
@@ -325,7 +325,7 @@ SELECT  title,
 			WHEN 'PG-13' THEN 'Parents Strongly Cautioned'
 			WHEN 'R' THEN 'Restricted'
 			WHEN 'NC-17' THEN 'Adults Only'
-			END descricion_rating
+		END descricion_rating
 FROM film
 ORDER BY title;
 
@@ -370,9 +370,9 @@ FROM film;
 
 SELECT  
 	SUM(CASE rental_rate
-			WHEN 0.99 THEN 1
-			ELSE 0
-		END) AS total_oferta
+		WHEN 0.99 THEN 1
+		ELSE 0
+	END) AS total_oferta
 FROM film;
 
 -- PASO 3: Repite la misma agregación SUM() para las otras tarifas
@@ -381,19 +381,19 @@ FROM film;
 
 SELECT  
 	SUM(CASE rental_rate
-			WHEN 0.99 THEN 1
-			ELSE 0
-		END) AS total_oferta,
+		WHEN 0.99 THEN 1
+		ELSE 0
+	END) AS total_oferta,
 	
 	SUM(CASE rental_rate
-			WHEN 2.99 THEN 1
-			ELSE 0
-		END) AS total_normal,
+		WHEN 2.99 THEN 1
+		ELSE 0
+	END) AS total_normal,
 	
 	SUM(CASE rental_rate
-			WHEN 4.99 THEN 1
-			ELSE 0
-		END) AS total_estreno
+		WHEN 4.99 THEN 1
+		ELSE 0
+	END) AS total_estreno
 FROM film;
 	
 
@@ -416,69 +416,68 @@ Calcula la ganacia (profit) si rentaras al menos una vez el total del inventario
 
 SELECT  
 	SUM(CASE rental_rate
-			WHEN 0.99 THEN 0.99 * 1.15
-			ELSE 0
-		END) AS total_oferta,
+		WHEN 0.99 THEN 0.99 * 0.15
+		ELSE 0
+	END) AS total_oferta,
 	
 	SUM(CASE rental_rate
-			WHEN 2.99 THEN 2.99 * 1.2
-			ELSE 0
-		END) AS total_normal,
+		WHEN 2.99 THEN 2.99 * 0.2
+		ELSE 0
+	END) AS total_normal,
 	
 	SUM(CASE rental_rate
-			WHEN 4.99 THEN 4.99 * 1.4
-			ELSE 0
-		END) AS total_estreno
+		WHEN 4.99 THEN 4.99 * 0.4
+		ELSE 0
+	END) AS total_estreno
 FROM film;
 
 /*
 Ejercicio 
 Usa CASE para calcular cuántas peliculas hay de las clasificación 
 (rating) 'G', 'PG' y 'R'
-
 */
 
 SELECT  
 	SUM(CASE rating
-			WHEN 'G' THEN 1
-			ELSE 0
-		END) AS total_G,
+		WHEN 'G' THEN 1
+		ELSE 0
+	END) AS total_G,
 	
 	SUM(CASE rating
-			WHEN 'PG' THEN 1
-			ELSE 0
-		END) AS total_PG,
+		WHEN 'PG' THEN 1
+		ELSE 0
+	END) AS total_PG,
 	
 	SUM(CASE rating
-			WHEN 'R' THEN 1
-			ELSE 0
-		END) AS total_R
+		WHEN 'R' THEN 1
+		ELSE 0
+	END) AS total_R
 FROM film;
 
 
 -- CASE y GROUP BY
 
-
 SELECT  
 	rental_rate,
 	SUM(CASE rating
-			WHEN 'G' THEN 1
-			ELSE 0
-		END) AS total_G,
+		WHEN 'G' THEN 1
+		ELSE 0
+	END) AS total_G,
 	
 	SUM(CASE rating
-			WHEN 'PG' THEN 1
-			ELSE 0
-		END) AS total_PG,
+		WHEN 'PG' THEN 1
+		ELSE 0
+	END) AS total_PG,
 	
 	SUM(CASE rating
-			WHEN 'R' THEN 1
-			ELSE 0
-		END) AS total_R
+		WHEN 'R' THEN 1
+		ELSE 0
+	END) AS total_R
 FROM film
 GROUP BY rental_rate;
 
 
+-------------------------------- FIN ----------------------------------
 
 
 
