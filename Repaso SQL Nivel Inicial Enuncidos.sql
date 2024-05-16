@@ -71,10 +71,8 @@ SELECT
 	c.cust_type_cd
 FROM
 	product p
-	LEFT JOIN account a
-	ON p.product_cd = a.product_cd
-	LEFT JOIN customer c
-	ON a.cust_id = c.cust_id
+	LEFT JOIN account a	ON p.product_cd = a.product_cd
+	LEFT JOIN customer c	ON a.cust_id = c.cust_id
 WHERE	c.cust_type_cd='I';
 
 -- Agregación 
